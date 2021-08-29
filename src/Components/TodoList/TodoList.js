@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import CheckCircleOutlineRoundedIcon from "@material-ui/icons/CheckCircleOutlineRounded";
 import EditRoundedIcon from "@material-ui/icons/EditRounded";
 import { CardActions } from "@material-ui/core";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import ViewTask from "../ViewTask/ViewTask";
 import moment from "moment";
 import Swal from "sweetalert2";
 import Axios from "axios";
@@ -13,10 +15,12 @@ import Axios from "axios";
 function TodoList({ data, setPost }) {
   const [state, setState] = useState({});
   const [todos, setTodos] = useState({});
-
+  const [viewTask, setViewTask] = useState(false);
   const [click, setClick] = useState(false);
 
   const showModal = () => setClick(!click);
+  const showTask = () => setViewTask(!viewTask);
+  const hideTask = () => setViewTask(false);
 
   const hideModal = () => setClick(false);
 
@@ -42,12 +46,11 @@ function TodoList({ data, setPost }) {
 
   const btnComplete = (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Task complete?",
       icon: "warning",
       showCancelButton: true,
       buttonsStyling: false,
-      confirmButtonColor: "#FF6767",
-      cancelButtonColor: "#d33",
+
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -78,6 +81,10 @@ function TodoList({ data, setPost }) {
               : val;
           })
         );
+
+        successMessage();
+      } else {
+        errorMessage();
       }
     });
   };
@@ -95,7 +102,7 @@ function TodoList({ data, setPost }) {
             }}
           >
             <CardContent>
-              <Typography>{todos.title}</Typography>
+              <h3>{todos.title}</h3>
               <Typography
                 className="classes.timestamp"
                 style={{ fontSize: "0.6rem" }}
@@ -105,6 +112,17 @@ function TodoList({ data, setPost }) {
             </CardContent>
 
             <CardActions>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  showTask();
+                  setState(todos);
+                }}
+              >
+                <VisibilityIcon />
+              </Button>
+
               <Button
                 variant="contained"
                 color="primary"
@@ -130,6 +148,24 @@ function TodoList({ data, setPost }) {
           </Card>
         );
       })}
+
+      {Object.keys(state).length > 0 ? (
+        <div className={viewTask ? "modal active" : "modal"}>
+          <div className="task-modal-content">
+            <span
+              className="close"
+              onClick={() => {
+                hideTask();
+              }}
+            >
+              &times;
+            </span>
+            <ViewTask data={state} />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
 
       {Object.keys(todos).length > 0 ? (
         <div className={click ? "modal active" : "modal"} id="task-modal">

@@ -25,7 +25,7 @@ const useStyle = makeStyles((theme) => ({
 function Home() {
   const [isloading, setLoading] = useState(true);
   const [todolist, setTodolist] = useState([]);
-  const classes = useStyle();
+
   const [click, setClick] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
