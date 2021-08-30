@@ -144,6 +144,7 @@ function Home() {
                   onChange={(e) => {
                     setContent(e.target.value);
                   }}
+                  maxLength="50"
                 />
 
                 <input type="submit" value="Add Task" />

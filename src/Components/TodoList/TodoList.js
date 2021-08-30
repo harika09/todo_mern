@@ -162,7 +162,9 @@ function TodoList({ data, setPost }) {
             >
               &times;
             </span>
-            <ViewTask data={state} />
+            <div className="task-information">
+              <ViewTask data={state} />
+            </div>
           </div>
         </div>
       ) : (

@@ -79,7 +79,7 @@
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  max-width: 640px;
+  max-width: 690px;
   width: 100%;
 }
 
@@ -182,8 +182,8 @@ input[type="submit"]:hover {
 
 .task-info {
   margin-top: 10px;
-  max-width: 100%;
-  width: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
 .task-info h2 {
@@ -191,8 +191,11 @@ input[type="submit"]:hover {
   margin-bottom: 5px;
 }
 
-.task-info p {
+.task-modal-content .task-info p {
+  display: block;
   color: #000;
+  width: 100%;
+  max-width: 540px;
 }
 
 @media screen and (max-width: 690px) {
