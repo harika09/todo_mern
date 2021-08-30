@@ -54,7 +54,9 @@ function TodoList({ data, setPost }) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://localhost:4000/post/delete/${id}`).then(
+        Axios.delete(
+          `https://react-task-todolist.herokuapp.com/post/delete/${id}`
+        ).then(
           setPost(
             data.filter((value) => {
               return value._id !== id;
@@ -69,7 +71,7 @@ function TodoList({ data, setPost }) {
     const { _id, title, content } = todos;
     e.preventDefault();
 
-    Axios.post(`http://localhost:4000/post/edit/${_id}`, {
+    Axios.post(`https://react-task-todolist.herokuapp.com/post/edit/${_id}`, {
       title: title,
       content: content,
     }).then((response) => {
@@ -102,7 +104,7 @@ function TodoList({ data, setPost }) {
             }}
           >
             <CardContent>
-              <h3>{todos.title}</h3>
+              <h3>{todos.title.substring(0, 18)}</h3>
               <Typography
                 className="classes.timestamp"
                 style={{ fontSize: "0.6rem" }}

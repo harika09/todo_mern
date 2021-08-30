@@ -56,10 +56,12 @@ function Home() {
 
   /* Load Task */
   const loadTodo = async () => {
-    Axios.get("http://localhost:4000/post").then((response) => {
-      setTodolist(response.data);
-      setLoading(false);
-    });
+    Axios.get("https://react-task-todolist.herokuapp.com/post").then(
+      (response) => {
+        setTodolist(response.data);
+        setLoading(false);
+      }
+    );
   };
 
   const submitTask = async (e) => {
@@ -68,7 +70,7 @@ function Home() {
     if (!title.trim() || !content.trim()) {
       errorMessage();
     } else {
-      Axios.post("http://localhost:4000/post/data", {
+      Axios.post("https://react-task-todolist.herokuapp.com/post/data", {
         title: title,
         content: content,
       }).then((response) => {
@@ -130,6 +132,7 @@ function Home() {
                   onChange={(e) => {
                     setTitle(e.target.value);
                   }}
+                  maxLength="25"
                 />
 
                 <label htmlFor="content">Task Details</label>
