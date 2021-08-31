@@ -1,6 +1,6 @@
 .home-container {
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
@@ -23,10 +23,6 @@
   margin-top: 25px;
 }
 
-.MuiCardContent-root h3 {
-  max-width: 10px;
-}
-
 .fab-icon {
   position: relative;
 }
@@ -40,18 +36,9 @@
   right: 0;
 }
 
-.MuiPaper-root {
-  cursor: pointer;
-}
-
-.MuiPaper-root h3 {
-  font-weight: 400;
-  font-size: 1.3rem;
-  max-width: 1000px;
-}
-
 /*Modal*/
-.modal {
+.modal,
+.task-modal-view {
   display: none;
   position: fixed;
   padding-top: 280px;
@@ -69,12 +56,7 @@
   display: block;
 }
 
-.view-task.active {
-  display: block;
-}
-
-.task-modal-content,
-.view-task-details {
+.task-modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -176,8 +158,41 @@ input[type="submit"]:hover {
 }
 
 /* Task Details */
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 15px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+}
+
+.task-card span {
+  font-size: 0.7rem;
+}
+
+.task-card h3,
+.task-card p {
+  word-break: break-word;
+}
+
 .task-details {
   font-size: 1.3rem;
+}
+
+.task-btn-actions button {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: #303f9f;
+  border-radius: 4px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.task-btn-actions button i {
+  font-size: 1rem;
+  color: #fff;
 }
 
 .task-info {
@@ -189,13 +204,12 @@ input[type="submit"]:hover {
 .task-info h2 {
   font-size: 1.3rem;
   margin-bottom: 5px;
+  font-weight: 400;
 }
 
 .task-modal-content .task-info p {
   display: block;
   color: #000;
-  width: 100%;
-  max-width: 540px;
 }
 
 @media screen and (max-width: 690px) {
@@ -203,8 +217,32 @@ input[type="submit"]:hover {
     width: 100%;
   }
 
+  .task-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .task-card span {
+    font-size: 0.5rem;
+  }
+
+  .task-btn-actions button {
+    padding: 5px;
+  }
+
+  .task-btn-actions button i {
+    font-size: 0.8rem;
+  }
+
   .task-modal-content {
     width: 80%;
+  }
+
+  .task-info h2 {
+    word-break: break-word;
+  }
+
+  .task-info p {
+    font-size: 80%;
   }
 
   .MuiCardContent-root h3 {

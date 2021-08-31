@@ -132,7 +132,7 @@ function Home() {
                   onChange={(e) => {
                     setTitle(e.target.value);
                   }}
-                  maxLength="25"
+                  maxLength="30"
                 />
 
                 <label htmlFor="content">Task Details</label>
@@ -144,7 +144,7 @@ function Home() {
                   onChange={(e) => {
                     setContent(e.target.value);
                   }}
-                  maxLength="50"
+                  maxLength="250"
                 />
 
                 <input type="submit" value="Add Task" />

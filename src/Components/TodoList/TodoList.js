@@ -1,15 +1,7 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import CheckCircleOutlineRoundedIcon from "@material-ui/icons/CheckCircleOutlineRounded";
-import EditRoundedIcon from "@material-ui/icons/EditRounded";
-import { CardActions } from "@material-ui/core";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import ViewTask from "../ViewTask/ViewTask";
-import moment from "moment";
 import Swal from "sweetalert2";
+import moment from "moment";
 import Axios from "axios";
 
 function TodoList({ data, setPost }) {
@@ -92,62 +84,50 @@ function TodoList({ data, setPost }) {
   };
 
   return (
-    <div className="card">
+    <>
       {data.map((todos) => {
         return (
-          <Card
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "10px",
-              margin: "10px",
-            }}
-          >
-            <CardContent>
-              <h3>{todos.title.substring(0, 18)}</h3>
-              <Typography
-                className="classes.timestamp"
-                style={{ fontSize: "0.6rem" }}
-              >
-                {moment(todos.timestamp).fromNow()}
-              </Typography>
-            </CardContent>
+          <div class="task-card-content">
+            <div className="task-card-info">
+              <div className="task-card">
+                <div className="task-info">
+                  <h3>{todos.title.substring(0, 10)}</h3>
+                  <span>{moment(todos.timestamp).fromNow()}</span>
+                </div>
 
-            <CardActions>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  showTask();
-                  setState(todos);
-                }}
-              >
-                <VisibilityIcon />
-              </Button>
+                <div className="task-btn-actions">
+                  <button
+                    className="view"
+                    onClick={() => {
+                      showTask();
+                      setState(todos);
+                    }}
+                  >
+                    <i className="fas fa-eye"></i>
+                  </button>
 
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  showModal();
-                  setState(todos);
-                  setTodos(todos);
-                }}
-              >
-                <EditRoundedIcon />
-              </Button>
+                  <button
+                    className="edit"
+                    onClick={() => {
+                      showModal();
+                      setTodos(todos);
+                    }}
+                  >
+                    <i className="far fa-edit"></i>
+                  </button>
 
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  btnComplete(todos._id);
-                }}
-              >
-                <CheckCircleOutlineRoundedIcon />
-              </Button>
-            </CardActions>
-          </Card>
+                  <button
+                    className="delete"
+                    onClick={() => {
+                      btnComplete(todos._id);
+                    }}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       })}
 
@@ -224,7 +204,7 @@ function TodoList({ data, setPost }) {
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
 
