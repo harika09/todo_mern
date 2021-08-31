@@ -4,23 +4,8 @@ import Axios from "axios";
 import TodoList from "../TodoList/TodoList";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { makeStyles } from "@material-ui/core/styles";
 import Swal from "sweetalert2";
 import { BeatLoader } from "react-spinners";
-
-const useStyle = makeStyles((theme) => ({
-  /* Fab Button  */
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
-    position: "relative",
-    minHeight: 200,
-  },
-  fab: {
-    position: "absolute",
-    left: "50%",
-  },
-}));
 
 function Home() {
   const [isloading, setLoading] = useState(true);

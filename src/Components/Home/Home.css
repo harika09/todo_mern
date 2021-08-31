@@ -257,4 +257,9 @@ input[type="submit"]:hover {
   button .MuiButton-label {
     width: 20px;
   }
+
+  .modal,
+  .task-modal-view {
+    padding-top: 200px;
+  }
 }
