@@ -87,7 +87,7 @@ function TodoList({ data, setPost }) {
     <>
       {data.map((todos) => {
         return (
-          <div class="task-card-content">
+          <div className="task-card-content">
             <div className="task-card-info">
               <div className="task-card">
                 <div className="task-info">
